@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <style media="screen">
+        .contacts-table {
+            border-spacing: 5px;
+        }
+    </style>
+    <title>React Elements - Contact Management</title>
+</head>
+
+<body>
+    <!-- Target Container -->
+    <div id="react-container"></div>
+
+    <!-- React Library & React DOM-->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <script type="text/babel">
+
+
+
+        // const ContactList = ({ contacts }) => {
+        //     return React.createElement(
+        //         "table",
+        //         { className: "contacts-table" },
+        //         React.createElement(
+        //             "tbody",
+        //             null,
+        //             React.createElement(
+        //                 "tr",
+        //                 null,
+        //                 React.createElement("th", null, "Name"),
+        //                 React.createElement("th", null, "Email")
+        //             ),
+        //             contacts.map((contact, i) =>
+        //                 React.createElement(
+        //                     "tr",
+        //                     { key: i },
+        //                     React.createElement("td", null, contact.name),
+        //                     React.createElement("td", null, contact.email)
+        //                 )
+        //             )
+        //         )
+        //     );
+        // };
+        const data = [
+            {
+                name: "Sreeraj Raman",
+                email: "srnamboothiri@suyati.com",
+            },
+            {
+                name: "Praphul",
+                email: "pnangeelil@suyati.com",
+            },
+            {
+                name: "Shamnad V A",
+                email: "sabdul@suyati.com",
+            },
+        ];
+        const style = {
+            "borderSpacing": "5px"
+        }
+
+        const ContactList = (props) => {
+           
+            const contact = props.contact;
+
+            return <table style={style}>
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                    {contact.map((contact, i) => {
+                        return <tr key={i}>
+                            <td>{contact.name}</td>
+                            <td>{contact.email}</td>
+                        </tr>
+                    })}
+                </tbody>
+            </table>
+        };
+
+
+        const contactManagement1 = <section id="contact-list">
+            <h1>Contacts</h1>
+            <ContactList contact={data}></ContactList>
+        </section>;
+
+        // const contactManagement = React.createElement(
+        //     "section",
+        //     { id: "contact-list" },
+        //     React.createElement("h1", null, "Contacts"),
+        //     React.createElement(ContactList, { contacts: data }, null)
+        // );
+        ReactDOM.render(
+            contactManagement1,
+            document.getElementById("react-container")
+        );
+
+        // const element = <h1>Hello, world!</h1>;
+        // ReactDOM.render(element, document.getElementById("react-container"));
+
+        // console.log("element", element);
+
+
+    </script>
+</body>
+
+</html>
